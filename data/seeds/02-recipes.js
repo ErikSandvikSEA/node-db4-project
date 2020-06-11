@@ -8,7 +8,7 @@ exports.seed = function(knex, Promise) {
     },
     {
       //id: 2
-      recipe_name: 'Bowl of Cereal'
+      recipe_name: 'Bowl of Cheerios'
     }
   ])
 };

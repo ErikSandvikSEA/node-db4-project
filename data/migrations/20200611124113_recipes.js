@@ -4,28 +4,19 @@ exports.up = function(knex) {
      .createTable('ingredients', tbl => {
           tbl.increments();
           tbl.string('ingredient_name').notNullable().index()
-          tbl.integer('ingredient_quantity').notNullable();
-     })
-     .createTable('steps', tbl => {
-          tbl.increments();
-          tbl.string('step_text').notNullable().index();
+          tbl.float('ingredient_quantity').notNullable();
      })
      .createTable('recipes', tbl => {
           tbl.increments()
           tbl.string('recipe_name').notNullable().index();
      })
-     .createTable('instructions', tbl => {
+     .createTable('steps', tbl => {
           tbl.increments();
+          tbl.string('step_text').notNullable().index();
           tbl
                .integer("recipe_id")
                .unsigned()
                .references('recipes.id')
-               .onDelete('RESTRICT')
-               .onUpdate('CASCADE');
-          tbl
-               .integer('step_number')
-               .unsigned()
-               .references('steps.id')
                .onDelete('RESTRICT')
                .onUpdate('CASCADE');
      })
